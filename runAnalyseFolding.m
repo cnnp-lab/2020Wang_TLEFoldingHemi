@@ -14,7 +14,7 @@ load('~/GitHub/CorticalFoldingTLE/data/tle_controls.mat')
 %this decides which plot we want to see, beeswarm is the raw data. '' is
 %the bootstrapped mean zscores as in the main paper.
 modstr='_beeswarm';
-modstr='';
+% modstr='';
 
 %% CAMCAN===============================
 DataTable=CamCAN_MasterTable;

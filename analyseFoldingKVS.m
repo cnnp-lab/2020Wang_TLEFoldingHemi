@@ -125,7 +125,7 @@ switch plt_format
         d=plotStdzdBootCI(group,data,0);
 end
 title(['A_t - ' cpmstr])
-[~,p,~,stats]=ttest2(At(refIDs),At(cmpIDs));%for those who love p-values... I use a ttest in any case, as comparing bootstrapped mean values in a ttest would not be fair.
+[p,~,stats]=ranksum(At(refIDs),At(cmpIDs));%for those who love p-values... I use a ranksum test in any case, as comparing bootstrapped mean values for significance would not be fair.
 
 zoc(1)=d;
 dim = [.4 .8 .2 .1];
@@ -149,7 +149,7 @@ switch plt_format
         d=plotStdzdBootCI(group,data,0)
 end
 title(['A_e - ' cpmstr])
-[~,p,~,stats]=ttest2(Ae(refIDs),Ae(cmpIDs));
+[p,~,stats]=ranksum(Ae(refIDs),Ae(cmpIDs));
 
 zoc(2)=d;
 dim = [.4 .8 .2 .1];
@@ -173,7 +173,7 @@ switch plt_format
         d=plotStdzdBootCI(group,data,0)
 end
 title(['T - ' cpmstr])
-[~,p,~,stats]=ttest2(T(refIDs),T(cmpIDs));
+[p,~,stats]=ranksum(T(refIDs),T(cmpIDs));
 
 zoc(3)=d;
 dim = [.4 .8 .2 .1];
@@ -244,7 +244,7 @@ switch plt_format
         d=plotStdzdBootCI(group,data,0)
 end
 title(['K - ' cpmstr])
-[~,p,~,stats]=ttest2(K(refIDs),K(cmpIDs));
+[p,~,stats]=ranksum(K(refIDs),K(cmpIDs));
 
 dim = [.4 .8 .2 .1];
 str = ['p=' num2str(p) ' d=' num2str(d)];
@@ -268,7 +268,7 @@ switch plt_format
         d=plotStdzdBootCI(group,data,0)
 end
 title(['I - ' cpmstr])
-[~,p,~,stats]=ttest2(I(refIDs),I(cmpIDs));
+[p,~,stats]=ranksum(I(refIDs),I(cmpIDs));
 
 dim = [.4 .8 .2 .1];
 str = ['p=' num2str(p) ' d=' num2str(d)];
@@ -292,7 +292,7 @@ switch plt_format
         d=plotStdzdBootCI(group,data,0)
 end
 title(['S - ' cpmstr])
-[~,p,~,stats]=ttest2(S(refIDs),S(cmpIDs));
+[p,~,stats]=ranksum(S(refIDs),S(cmpIDs));
 
 zKIS(3)=d;
 dim = [.4 .8 .2 .1];
