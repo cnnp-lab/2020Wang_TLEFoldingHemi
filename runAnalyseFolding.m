@@ -8,13 +8,13 @@ close all
 %https://github.com/bastibe/Violinplot-Matlab
 %https://uk.mathworks.com/matlabcentral/fileexchange/70120-beeswarm
 
-load('~/GitHub/CorticalFoldingTLE/data/CamCAN_MasterTable.mat')
-load('~/GitHub/CorticalFoldingTLE/data/tle_controls.mat')
+load('~/GitHub/2020Wang_TLEFoldingHemi/data/CamCAN_MasterTable.mat')
+load('~/GitHub/2020Wang_TLEFoldingHemi/data/tle_controls.mat')
 
 %this decides which plot we want to see, beeswarm is the raw data. '' is
 %the bootstrapped mean zscores as in the main paper.
 modstr='_beeswarm';
-% modstr='';
+modstr='';
 
 %% CAMCAN===============================
 DataTable=CamCAN_MasterTable;
@@ -135,3 +135,41 @@ zlim([-1.5 1.5])
 % xlim([-1.5 1.5])
 % ylim([-1.5 1.5])
 % zlim([-1.5 1.5])
+
+
+
+% 
+% %% ADNI===============================
+% 
+% load('~/GitHub/CorticalFoldingTLE/data/ADNI_AD_MasterTable.mat')
+% load('~/GitHub/CorticalFoldingTLE/data/ADNI_Ctrl_MasterTable.mat')
+% ctrllgt=ADNI_Ctrl_MasterTable.inNonLgt==1;
+% ADNI_Ctrl_nonLgt=ADNI_Ctrl_MasterTable(ctrllgt,:);
+% ADNI_Ctrl_nonLgt.isControl=ones(size(ADNI_Ctrl_nonLgt,1),1);
+% 
+% ADlgt=ADNI_AD_MasterTable.inNonLgt==1;
+% ADNI_AD_nonLgt=ADNI_AD_MasterTable(ADlgt,:);
+% ADNI_AD_nonLgt.isControl=zeros(size(ADNI_AD_nonLgt,1),1);
+% 
+% ADNI_nonLgt=[ADNI_Ctrl_nonLgt;ADNI_AD_nonLgt];
+% 
+% DataTable=ADNI_nonLgt;
+% 
+% age  = DataTable.Age;
+% sex  = DataTable.Gender;
+% 
+% 
+% T=DataTable.AvgCortThickness;
+% ctrl = DataTable.isControl;
+% 
+% % run TLE vs control
+% refIDs=find(ctrl==1);
+% cmpIDs=find(ctrl==0);
+% 
+% cpmstr='Ctrl (ref) vs AD'
+% 
+% pltpath=['figs' modstr '/ADNI/'];
+% 
+% close all
+% [mKVS_AD,zKVS_AD,moc_AD,zoc_AD,coeff_AD]=analyseFoldingKVS(DataTable,age,sex,refIDs,cmpIDs,cpmstr,pltpath)%with age regression
+
